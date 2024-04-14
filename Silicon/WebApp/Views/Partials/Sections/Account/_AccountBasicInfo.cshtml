@@ -1,0 +1,70 @@
+﻿@model AccountDetailsBasicInfoViewModel
+
+<div class="account-basic-info">
+
+    <form id="form-basic-info" class="form-common" method="post" asp-controller="Account" asp-action="UpdateBasicInfo" asp-route-ReturnUrl="@ViewData["ReturnUrl"]">
+        <h2>Account Details</h2>
+        <h5>Basic Info</h5>
+
+        @{
+            string keyName = "BasicInfoStatusMessage";
+            if (!string.IsNullOrEmpty(TempData[keyName] as string))
+            {
+                <div class="@($"{(TempData["BasicInfoSuccess"] is bool succeed && succeed ? "message-success" : "message-error")}") large">
+                    @TempData[keyName]
+                </div>
+            }
+
+            if (ViewData["UserEntity"] is UserEntity userEntity)
+            {
+                ViewData["FirstName"] = userEntity.FirstName;
+                ViewData["LastName"] = userEntity.LastName;
+                ViewData["Email"] = userEntity.Email;
+                ViewData["PhoneNumber"] = userEntity.PhoneNumber;
+                ViewData["Biography"] = userEntity.Biography;
+            }
+
+        <div class="form-content">
+            <div class="grid">
+                    <div class="input-field first-name">
+                        <label class="input-label" asp-for="FirstName"></label>
+                        <input asp-for="FirstName" value=@ViewData["FirstName"] />
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+
+                    <div class="input-field last-name">
+                        <label class="input-label" asp-for="LastName"></label>
+                        <input asp-for="LastName" value=@ViewData["LastName"] />
+                        <span asp-validation-for="LastName"></span>
+                    </div>
+
+                    <div class="input-field email-address">
+                        <label class="input-label" asp-for="Email"></label>
+                        <input asp-for="Email" value=@ViewData["Email"] />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+
+                    <div class="input-field phone">
+                        <label class="input-label" asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" value=@ViewData["PhoneNumber"] />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </div>
+            </div>
+
+            <div class="input-field biography">
+                <label class="input-label" asp-for="Biography"></label>
+                    <textarea cols="5" rows="5" name="@Html.NameFor(m => m.Biography)">@ViewData["Biography"]</textarea>
+                <span asp-validation-for="Biography"></span>
+            </div>
+
+            <div class="save-cancel-buttons">
+                <a class="btn-theme-secondary" asp-controller="Account" asp-action="CancelChanges">Cancel</a>
+                <input class="btn-theme-primary submit-form" type="submit" value="Save changes" />
+            </div>
+
+        </div>
+
+        }
+    </form>
+
+</div>

@@ -1,0 +1,74 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/scss/core/_general.css",
+    "inputFile": "wwwroot/css/scss/core/_general.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/site.css",
+    "inputFile": "wwwroot/css/site.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/_core.css",
+    "inputFile": "wwwroot/css/scss/_core.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/_components.css",
+    "inputFile": "wwwroot/css/scss/_components.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/_sections.css",
+    "inputFile": "wwwroot/css/scss/_sections.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/cores/_colors.css",
+    "inputFile": "wwwroot/css/scss/cores/_colors.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/cores/_typography.css",
+    "inputFile": "wwwroot/css/scss/cores/_typography.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/_cores.css",
+    "inputFile": "wwwroot/css/scss/_cores.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/cores/_general.css",
+    "inputFile": "wwwroot/css/scss/cores/_general.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/cores/_media.css",
+    "inputFile": "wwwroot/css/scss/cores/_media.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/components/_buttons.css",
+    "inputFile": "wwwroot/css/scss/components/_buttons.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/sections/_footer.css",
+    "inputFile": "wwwroot/css/scss/sections/_footer.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/sections/_header.css",
+    "inputFile": "wwwroot/css/scss/sections/_header.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/components/_switches.css",
+    "inputFile": "wwwroot/css/scss/components/_switches.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/sections/home/_benefits.css",
+    "inputFile": "wwwroot/css/scss/sections/home/_benefits.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/sections/home/_showcase.css",
+    "inputFile": "wwwroot/css/scss/sections/home/_showcase.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/site.css",
+    "inputFile": "wwwroot/css/scss/site.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/scss/sections/home/_download.css",
+    "inputFile": "wwwroot/css/scss/sections/home/_download.scss"
+  }
+]

@@ -1,0 +1,111 @@
+.account-basic-info {
+
+    #form-basic-info {
+        h2 {
+            padding-bottom: 32px;
+        }
+
+        h5 {
+            color: var(--color-theme);
+            padding-bottom: 24px;
+        }
+
+        .form-content {
+
+            .grid {
+                row-gap: 15px;
+                column-gap: 8px;
+                display: grid;
+                grid-template-areas: "firstname firstname" "lastname lastname" "email email" "phone phone";
+                grid-template-columns: 1fr;
+
+                @include md {
+                    row-gap: 15px;
+                    column-gap: 8px;
+                    grid-template-areas: "firstname lastname" "email phone";
+                    grid-template-columns: 1fr 1fr;
+                }
+
+
+                .first-name {
+                    grid-area: firstname;
+                }
+
+                .last-name {
+                    grid-area: lastname;
+                }
+
+                .email-address {
+                    grid-area: email;
+                }
+
+                .phone {
+                    grid-area: phone;
+                }
+            }
+
+            .save-cancel-buttons {
+                padding-top: 32px;
+                padding-bottom: 40px;
+
+                a {
+                    margin-right: 8px;
+                }
+            }
+
+            border-bottom: 1px solid var(--color-gray-400);
+        }
+    }
+}
+
+.account-address {
+
+    #form-address {
+
+        h5 {
+            color: var(--color-theme);
+            padding-top: 32px;
+            padding-bottom: 24px;
+        }
+
+        .form-content {
+
+            .grid {
+                column-gap: 8px;
+                display: grid;
+                grid-template-areas: "address1 address1" "address2 address2" "postalcode postalcode" "city city";
+                grid-template-columns: 1fr;
+
+                @include md {
+                    grid-template-areas: "address1 address1" "address2 address2" "postalcode city";
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                .address-line1 {
+                    grid-area: address1;
+                }
+
+                .address-line2 {
+                    grid-area: address2;
+                }
+
+                .postal-code {
+                    grid-area: postalcode;
+                }
+
+                .city {
+                    grid-area: city;
+                }
+            }
+
+            .save-cancel-buttons {
+                padding-top: 32px;
+                padding-bottom: 40px;
+
+                a {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

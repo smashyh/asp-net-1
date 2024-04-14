@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["woiejf"] = "";
+    ViewData["ThemeMode"] = Context.Request.Cookies["theme"] ?? "light-mode";
+    bool hasConsented = Context.Request.Cookies["accept_cookies"] != null && Context.Request.Cookies["accept_cookies"] == "true";
+}
+
+<!DOCTYPE html>
+<html lang="en" data-theme-mode="@ViewData["ThemeMode"]">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <title>@(!string.IsNullOrEmpty(ViewData["Title"]?.ToString()) ? $"{@ViewData["Title"]} | Silicon" : "Silicon")</title>
+
+@*     @if(!string.IsNullOrEmpty(ViewData["LightMode"]?.ToString()))
+    {
+        <link rel="stylesheet" href="~/css/dark-mode.css" asp-append-version="true" />
+    }
+    else
+    {
+        //<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/light-mode.css" asp-append-version="true" />
+    } *@
+
+    <script>
+        // Initialize dark mode settings here so the website 
+        // doesn't blink on load.
+        // let isDarkMode = localStorage.getItem('darkModeOn');
+
+        // if (isDarkMode === null) {
+        //     localStorage.setItem(darkModeSettingName, 0);
+        // }
+        // else if (isDarkMode == 1) {
+        //     document.documentElement.classList.add('dark-mode');
+        // }
+    </script>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="wrapper">
+        @if (!hasConsented)
+        {
+            <partial name="~/Views/Partials/Sections/_CookieConsent.cshtml" />
+        }
+
+        <partial name="~/Views/Partials/Sections/_Header.cshtml" />
+
+        <main>
+            @RenderBody()
+        </main>
+
+        <partial name="~/Views/Partials/Sections/_Footer.cshtml" />
+    </div>
+
+    <script src="https://kit.fontawesome.com/a041cc045c.js" asp-append-version="true" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>

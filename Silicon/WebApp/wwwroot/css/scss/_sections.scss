@@ -1,0 +1,26 @@
+@import 'sections/_header.scss';
+@import 'sections/_footer.scss';
+@import 'sections/_cookieconsent.scss';
+
+@import 'sections/home/_showcase.scss';
+@import 'sections/home/_benefits.scss';
+@import 'sections/home/_darklightmode.scss';
+@import 'sections/home/_management.scss';
+@import 'sections/home/_download.scss';
+@import 'sections/home/_topworktools.scss';
+@import 'sections/home/_newsletter.scss';
+
+@import 'sections/auth/signin/_signin.scss';
+@import 'sections/auth/signup/_signup.scss';
+@import 'sections/auth/signupsuccess/_signupsuccess.scss';
+
+@import 'sections/account/_accountsettings.scss';
+
+@import 'sections/course/courses/_courses.scss';
+@import 'sections/course/course/_course.scss';
+
+@import 'sections/course/course/_course.scss';
+
+@import 'sections/contact/_contact.scss';
+
+@import "sections/error/notfound/_notfound.scss";

@@ -1,0 +1,39 @@
+﻿@model AccountSecurityDeleteAccountViewModel
+
+<div class="delete-account">
+    <form id="form-delete-account" class="form-common" method="post" asp-controller="Account" asp-action="DeleteAccount">
+        
+        <h5>Delete account</h5>
+
+        @{
+            string keyName = "DeleteAccountStatusMessage";
+            if (!string.IsNullOrEmpty(TempData[keyName] as string))
+            {
+                <div class="@($"{(TempData["DeleteAccountSuccess"] is bool succeed && succeed ? "message-success" : "message-error")}") large">
+                    @TempData[keyName]
+                </div>
+            }
+        }
+
+        <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
+       
+        <div class="form-content">
+
+            <div class="grid">
+
+                <div class="checkbox-field">
+                    <div class="input-field">
+                        <input asp-for="DeleteAccountConfirm" />
+                        <label asp-for="DeleteAccountConfirm">
+                            Yes, I want to delete my account.
+                        </label>
+                    </div>
+                    <span asp-validation-for="DeleteAccountConfirm"></span>
+                </div>
+
+            </div>
+
+            <input class="btn-theme-danger submit-form" type="submit" value="Delete" />
+        </div>
+    </form>
+</div>

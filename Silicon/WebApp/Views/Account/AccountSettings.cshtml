@@ -1,0 +1,26 @@
+﻿@inject AccountService _AccountService
+
+@{
+    ViewData["UserEntity"] = await _AccountService.GetUserAsync(User);
+}
+
+<section class="account-settings">
+    <div class="container">
+        <partial name="~/Views/Partials/Sections/Account/_AccountSettingsMenu.cshtml" />
+
+        <div class="account-menus">
+            @switch (ViewData["AccountSettingsMenu"])
+            {
+                default:
+                case "details":
+                    <partial name="~/Views/Partials/Sections/Account/_AccountDetails.cshtml" />
+                    break;
+
+                case "security":
+                    <partial name="~/Views/Partials/Sections/Account/_AccountSecurity.cshtml" />
+                    break;
+            }
+        </div>
+
+    </div>
+</section>

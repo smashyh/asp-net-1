@@ -1,0 +1,183 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+:root {
+  --color-white: #FFFFFF;
+  --color-gray-100: #F3F6FF;
+  --color-gray-200: #EFF2FC;
+  --color-gray-300: #E2E5F1;
+  --color-gray-400: #D4D7E5;
+  --color-gray-500: #B4B7C9;
+  --color-gray-600: #9397AD;
+  --color-gray-700: #565973;
+  --color-gray-800: #33354D;
+  --color-gray-900: #0B0F19;
+  --color-black: #000000;
+  --color-btn-white: #FFFFFF;
+  --color-theme: #6366F1;
+  --color-danger: #EF4444;
+  --color-danger-alpha: #EF44441E;
+  --color-success: #22C55E;
+  --color-success-alpha: #22C55E1E;
+  --color-warning: #FFBA08;
+  --color-info: #4C82F7;
+  --color-danger-bg: #F5D7DA;
+}
+
+html[data-theme-mode=dark-mode] {
+  --color-black: #FFFFFF;
+  --color-gray-900: #F3F6FF;
+  --color-gray-800: #EFF2FC;
+  --color-gray-700: #E2E5F1;
+  --color-gray-600: #D4D7E5;
+  --color-gray-500: #B4B7C9;
+  --color-gray-400: #9397AD;
+  --color-gray-300: #565973;
+  --color-gray-200: #33354D;
+  --color-gray-100: #0B0F19;
+  --color-white: #0B0F19;
+  --color-btn-white: #FFFFFF;
+  --color-theme: #6366F1;
+  --color-danger: #EF4444;
+  --color-success: #22C55E;
+  --color-warning: #FFBA08;
+  --color-info: #4C82F7;
+  --color-danger-bg: #F5D7DA;
+}
+
+:root {
+  --sm-min-width: 576px;
+  --md-min-width: 768px;
+  --lg-min-width: 992px;
+  --xl-min-width: 1200px;
+  --xxl-min-width: 1400px;
+}
+
+:root {
+  --font-manrope: "Manrope", sans-serif;
+}
+
+h1 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-size: 40px;
+}
+
+h2 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-size: 32px;
+}
+
+h3 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-size: 28px;
+}
+
+h4 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-size: 24px;
+}
+
+h5 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-size: 20px;
+}
+
+h6 {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: var(--color-gray-900);
+  font-size: 16px;
+}
+
+p {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+p a, label a {
+  color: var(--color-theme);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+body {
+  font-family: var(--font-manrope);
+  font-size: 16px;
+  font-weight: 400;
+  background-color: var(--color-white);
+  color: var(--color-gray-900);
+  overflow-x: hidden;
+}
+body:has(#backdrop.active), body:has(#cookie-backdrop) {
+  overflow: hidden;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/*input[type=email] {
+    background-image: url('../../../../images/home/bx-envelope.svg');
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    @include form-layout;
+    padding-left: 40px;
+}*/

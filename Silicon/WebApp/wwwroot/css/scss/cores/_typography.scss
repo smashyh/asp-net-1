@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+$font-manrope: "Manrope", sans-serif;
+
+:root {
+    --font-manrope: 'Manrope', sans-serif;
+}
+
+@mixin font-standard {
+    font-family: $font-manrope;
+}
+
+// Weights
+
+@mixin font-weight-extralight {
+    @include font-standard;
+    font-weight: 200;
+}
+
+@mixin font-weight-light {
+    @include font-standard;
+    font-weight: 300;
+}
+
+@mixin font-weight-regular {
+    @include font-standard;
+    font-weight: 400;
+}
+
+@mixin font-weight-medium {
+    @include font-standard;
+    font-weight: 500;
+}
+
+@mixin font-weight-semibold {
+    @include font-standard;
+    font-weight: 600;
+}
+
+@mixin font-weight-bold {
+    @include font-standard;
+    font-weight: 700;
+}
+
+@mixin font-weight-extrabold {
+    @include font-standard;
+    font-weight: 800;
+}
+
+// Display headings
+
+@mixin font-display-base {
+    @include font-weight-extrabold;
+    color: var(--color-gray-900);
+}
+
+@mixin font-display-1 {
+    @include font-display-base;
+    font-size: 80px;
+}
+
+@mixin font-display-2 {
+    @include font-display-base;
+    font-size: 72px;
+}
+
+@mixin font-display-3 {
+    @include font-display-base;
+    font-size: 64px;
+}
+
+@mixin font-display-4 {
+    @include font-display-base;
+    font-size: 56px;
+}
+
+@mixin font-display-5 {
+    @include font-display-base;
+    font-size: 48px;
+}
+
+@mixin font-display-6 {
+    @include font-display-base;
+    font-size: 42px;
+}
+
+// Body text
+
+@mixin font-body-header-base {
+    @include font-weight-bold;
+    //color: var(--color-gray-900);
+}
+
+@mixin font-body-base {
+    @include font-weight-regular;
+    //color: var(--color-gray-700);
+}
+
+@mixin font-body-lead-header {
+    @include font-body-header-base;
+    font-size: 24px;
+}
+
+@mixin font-body-lead {
+    @include font-body-base;
+    font-size: 24px;
+}
+
+@mixin font-body-xl-header {
+    @include font-body-header-base;
+    font-size: 20px;
+}
+
+@mixin font-body-xl {
+    @include font-body-base;
+    font-size: 20px;
+}
+
+@mixin font-body-l-header {
+    @include font-body-header-base;
+    font-size: 18px;
+}
+
+@mixin font-body-l {
+    @include font-body-base;
+    font-size: 18px;
+}
+
+@mixin font-body-m-header {
+    @include font-body-header-base;
+    font-size: 16px;
+}
+
+@mixin font-body-m {
+    @include font-body-base;
+    font-size: 16px;
+}
+
+@mixin font-body-s-header {
+    @include font-body-header-base;
+    font-size: 14px;
+}
+
+@mixin font-body-s {
+    @include font-body-base;
+    font-size: 14px;
+}
+
+@mixin font-body-xs-header {
+    @include font-body-header-base;
+    font-size: 12px;
+}
+
+@mixin font-body-xs {
+    @include font-body-base;
+    font-size: 12px;
+}
+
+// Headings
+
+@mixin font-heading-base {
+    @include font-weight-extrabold;
+    color: var(--color-gray-900);
+}
+
+@mixin font-heading-h1 {
+    @include font-heading-base;
+    font-size: 40px;
+}
+
+@mixin font-heading-h2 {
+    @include font-heading-base;
+    font-size: 32px;
+}
+
+@mixin font-heading-h3 {
+    @include font-heading-base;
+    font-size: 28px;
+}
+
+@mixin font-heading-h4 {
+    @include font-heading-base;
+    font-size: 24px;
+}
+
+@mixin font-heading-h5 {
+    @include font-heading-base;
+    font-size: 20px;
+}
+
+@mixin font-heading-h6 {
+    @include font-heading-base;
+    font-size: 16px;
+}
+
+// Navigation
+
+@mixin font-navigation {
+    @include font-weight-semibold;
+    color: var(--color-gray-800);
+    font-size: 16px;
+}
+
+// Default stylings
+
+h1 {
+    @include font-heading-h1;
+}
+
+h2 {
+    @include font-heading-h2;
+}
+
+h3 {
+    @include font-heading-h3;
+}
+
+h4 {
+    @include font-heading-h4;
+}
+
+h5 {
+    @include font-heading-h5;
+}
+
+h6 {
+    @include font-heading-h6;
+}
+
+p {
+    @include font-body-m;
+}
+
+p a, label a {
+    color: var(--color-theme);
+}

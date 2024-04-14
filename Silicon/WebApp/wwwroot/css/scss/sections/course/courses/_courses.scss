@@ -1,0 +1,375 @@
+section.courses {
+
+    .container {
+        padding-top: 96px;
+
+        .course-header {
+            display: grid;
+            align-items: center;
+            grid-template-areas: "headtext headtext" "filters filters";
+            grid-template-rows: auto auto;
+
+            @include xl {
+                grid-template-areas: "headtext filters";
+                grid-template-columns: 1fr auto;
+            }
+
+            h1 {
+                grid-area: headtext;
+                padding-bottom: 12px;
+
+                @include xl {
+                    padding-bottom: 0;
+                }
+            }
+
+            #filter {
+                grid-area: filters;
+                column-gap: 24px;
+                row-gap: 1px;
+                grid-template-areas: "search" "category";
+                grid-template-rows: 1fr 1fr;
+
+                @include md {
+                    grid-template-areas: "category search";
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: none;
+                    row-gap: 0;
+                }
+
+                @include xl {
+                    grid-template-columns: auto 1fr;
+                }
+
+                .filter-item {
+                    border: 1px solid var(--color-gray-500);
+                    border-radius: 8px;
+                    display: flex;
+                }
+
+                .category-selector {
+                    grid-area: category;
+
+                    .current-option {
+                        @include xl {
+                            width: 240px;
+                        }
+                    }
+                }
+
+                .search-bar {
+                    grid-area: search;
+                    height: 100%;
+                    width: 100%;
+
+                    @include xl {
+                        width: 300px;
+                    }
+
+                    align-items: center;
+
+                    .search-content {
+                        display: grid;
+                        align-items: center;
+                        grid-template-areas: "input icon";
+                        grid-template-columns: 1fr auto;
+                        flex-grow: 1;
+                        margin: 0 16px;
+
+                        input {
+                            border: none;
+                            grid-area: input;
+                            padding: 0;
+                        }
+
+                        button {
+                            all: initial;
+                            font: inherit;
+                            color: inherit;
+                            cursor: pointer;
+                        }
+
+                        i {
+                            grid-area: icon;
+                        }
+                    }
+                }
+            }
+        }
+
+        .course-list {
+            padding-top: 40px;
+            display: grid;
+            justify-items: center;
+            row-gap: 24px;
+            //width: fit-content;
+            //margin: auto;
+            align-items: center;
+            grid-template-columns: repeat(1, 1fr);
+
+            @include md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include xl {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .course-item {
+                width: 100%;
+                max-width: 416px;
+                height: 473px;
+                border-radius: 8px;
+                overflow: hidden;
+                text-decoration: none;
+
+                @include sm {
+                    width: 416px;
+                    height: 473px;
+                }
+
+                @include md {
+                    width: 320px;
+                }
+
+                @include lg {
+                    width: 416px;
+                }
+
+                @include xl {
+                    width: 360px;
+                }
+
+                @include xxl {
+                    width: 416px;
+                }
+
+                @include dark-mode {
+                    background-color: color-mix(in srgb, var(--color-gray-100) 97%, #FFFFFF);
+                    transition: background-color ease-in-out .1s;
+
+                    &:hover {
+                        background-color: var(--color-gray-200);
+                    }
+                }
+
+                @include shadow-s;
+
+                .course-thumbnail {
+                    height: 50%;
+
+                    .overlapping-elements {
+                        padding: 16px;
+                        display: grid;
+                        grid-template-areas: "badges bookmark";
+                        grid-template-columns: 1fr auto;
+
+                        .badges {
+                            grid-area: badges;
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            row-gap: 8px;
+
+                            p {
+                                @include course-badge;
+                            }
+                        }
+
+                        .bookmark {
+                            grid-area: bookmark;
+
+                            .wrap {
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+                                width: 36px;
+                                height: 36px;
+                                background-color: var(--color-btn-white);
+                                color: #010101;
+                                border-radius: 50%;
+                                align-items: center;
+                                cursor: pointer;
+
+                                .solid {
+                                    display: none;
+                                }
+
+                                i {
+                                    position: absolute;
+                                }
+
+                                &:hover {
+                                    .solid {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .course-info {
+                    height: 50%;
+                    margin: 24px;
+                    color: var(--color-gray-800);
+
+                    .course-top-info {
+                        border-bottom: 1px solid var(--color-gray-300);
+
+                        h5 {
+                            padding-bottom: 8px;
+                            min-height: 63px;
+                        }
+
+                        p {
+                            padding-bottom: 12px;
+                            color: var(--color-gray-700);
+                            @include font-body-s;
+                        }
+
+                        .prices {
+                            display: flex;
+                            gap: 8px;
+                            align-items: center;
+                            padding-bottom: 20px;
+
+                            h6 {
+                                color: var(--color-theme);
+                                font-size: 18px;
+                                @include font-weight-bold;
+                            }
+
+                            p {
+                                display: none;
+                                font-size: 16px;
+                                align-items: center;
+                                color: var(--color-gray-600);
+                                margin: 0;
+                                padding: 0;
+                            }
+
+                            &.on-discount {
+
+                                h6 {
+                                    color: var(--color-danger);
+                                }
+
+                                p {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    .course-bottom-info {
+                        display: flex;
+                        column-gap: 24px;
+                        padding-top: 24px;
+                        color: var(--color-gray-600);
+
+                        .bottom-info-item {
+
+                            i {
+                                padding-right: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .no-results {
+                padding-bottom: 320px;
+            }
+        }
+
+        .pagination {
+            padding-top: 32px;
+            display: flex;
+            column-gap: 8px;
+            justify-content: center;
+        }
+
+        .job-ad {
+            margin-top: 96px;
+            background-color: var(--color-gray-200);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            @include lg {
+                display: grid;
+                grid-template-areas: "content img";
+                grid-template-columns: auto auto;
+                padding: 32px 32px;
+            }
+
+            @include xxl {
+                padding: 32px 110px;
+            }
+
+            .content {
+                grid-area: content;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 300px;
+                text-align: center;
+                margin: 24px 0;
+                row-gap: 24px;
+
+                @include sm {
+                    width: 400px;
+                }
+
+                @include lg {
+                    margin: 0;
+                    align-items: flex-start;
+                    text-align: left;
+                    width: 400px;
+                }
+
+                @include xl {
+                    width: 526px;
+                }
+
+                p {
+                    @include font-body-lead-header;
+                }
+
+                h1 {
+                    @include font-heading-h3;
+
+                    @include sm {
+                        @include font-heading-h2;
+                    }
+
+                    @include md {
+                        @include font-heading-h1;
+                    }
+
+                    span {
+                        color: var(--color-theme);
+                    }
+                }
+
+                a {
+                    width: fit-content;
+                    text-align: center;
+                    margin-bottom: 24px;
+
+                    @include lg {
+                        margin-bottom: 0;
+                        text-align: left;
+                    }
+                }
+            }
+
+            img {
+                grid-area: img;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,175 @@
+﻿@model CourseViewModel
+
+<section class="single-course">
+
+    <div class="course-header" style="background-image: linear-gradient(to right, rgba(19, 16, 34, .7), rgba(19, 16, 34, .7)), url('@Model.Course.CourseThumbnailImageUrl');">
+        <div class="container">
+
+            <div class="title">
+                <div class="badges">
+                    @foreach (var badge in Model.Course.CourseBadges)
+                    {
+                        <p class="badge" style="background-color: @badge.BackgroundColorStyling; color: @badge.ColorStyling;">@badge.BadgeLabel</p>
+                    }
+                </div>
+
+                <h1>@Model.Course.CourseName</h1>
+                <p class="course-desc">@Model.Course.CourseShortDescription</p>
+            </div>
+
+            <div class="course-meta">
+                <div class="rating">
+                    <div class="stars"> 
+                        <div class="stars-empty">
+                            <img src="~/images/general/rating-star-empty.svg" alt="empty-star"/>
+                            <img src="~/images/general/rating-star-empty.svg" alt="empty-star"/>
+                            <img src="~/images/general/rating-star-empty.svg" alt="empty-star"/>
+                            <img src="~/images/general/rating-star-empty.svg" alt="empty-star"/>
+                            <img src="~/images/general/rating-star-empty.svg" alt="empty-star"/>
+                        </div>
+
+                        <div class="stars-filled" style="clip-path: inset(0 @((1 - (Model.Course.AverageRating / 5.0m)) * 100.0m)% 0 0);">
+                            <img src="~/images/general/rating-star.svg" alt="star" />
+                            <img src="~/images/general/rating-star.svg" alt="star" />
+                            <img src="~/images/general/rating-star.svg" alt="star" />
+                            <img src="~/images/general/rating-star.svg" alt="star" />
+                            <img src="~/images/general/rating-star.svg" alt="star" />
+                        </div>
+                    </div>
+
+                    <p>(@Model.Course.ReviewCount.ToStringWithSuffix() reviews)</p>
+
+                </div>
+
+                <div class="likes">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <p>@Model.Course.LikeCount.ToStringWithSuffix() likes</p>
+                </div>
+
+                <div class="time">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>@Model.Course.CourseLengthHours hours</p>
+                </div>
+            </div>
+
+            <div class="author-info">
+                <img src="@(Model.Course.CourseCreator.ProfileImageUrl ?? "~/images/general/default_avatar.jpg")" />
+                <div class="content">
+                    <h6>Created by</h6>
+                    <p>@Model.Course.CourseCreator.FirstName @Model.Course.CourseCreator.LastName</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="course-info">
+
+            <div class="course-text">
+                <h1>Course Description</h1>
+                <p>@Model.Course.CourseDescription</p>
+
+                @{
+                    string whatYoullLearn = Model.Course.WhatYoullLearn;
+                    string[] bulletPoints = whatYoullLearn.Split("|");
+
+                    if (bulletPoints?.Length > 0)
+                    {
+                        <h2>What you'll learn</h2>
+                        <ul>
+                            @foreach (string bulletPoint in bulletPoints)
+                            {
+                                <li>@bulletPoint</li>
+                            }
+                        </ul>
+                    }
+                }
+
+                @{
+                    string programDetails = Model.Course.ProgramDetails;
+
+                    if (programDetails != null)
+                    {
+                        string[] programSteps = programDetails.Split("|");
+                        <div class="program-details">
+                            <h1>Program Details</h1>
+
+                            @for (int i = 0; i < programSteps.Length; i++)
+                            {
+                                string[] stepText = programSteps[i].Split(";");
+                                <div class="program-step">
+                                    <div class="step-number"><h4>@(i + 1)</h4></div>
+                                    <div class="content">
+                                        <h4>@(stepText[0])</h4>
+                                        <p>@(stepText[1] ?? "")</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="course-sidewindow">
+                @{
+                    int? onDemandVideo = Model.Course.OnDemandVideoHourCount;
+                    int? articles = Model.Course.ArticleCount;
+                    int? downloads = Model.Course.DownloadableResourceCount;
+                    bool? hasLifetimeAccess = Model.Course.HasFullLifetimeAccess;
+                    bool? hasCertificate = Model.Course.HasCertificateOfCompletion;
+
+                    if (!(onDemandVideo == null && articles == null && downloads == null
+                    && (hasLifetimeAccess == null || !hasLifetimeAccess.Value)
+                    && (hasCertificate == null || !hasCertificate.Value)))
+                    {
+                        <div class="info-includes">
+                            <h4>This course includes:</h4>
+
+                            @if (onDemandVideo != null)      { <div class="include-item"><img src="~/images/courses/course/bx-slideshow.svg" /><p>@onDemandVideo hours on-demand video</p></div> }
+                            @if (articles != null)           { <div class="include-item"><img src="~/images/courses/course/bx-file.svg" /><p>@articles articles</p></div> }
+                            @if (downloads != null)          { <div class="include-item"><img src="~/images/courses/course/bx-download.svg" /><p>@downloads downloadable resources</p></div> }
+
+                            @if ((hasLifetimeAccess != null && hasLifetimeAccess.Value)) { <div class="include-item"><img src="~/images/courses/course/bx-infinite.svg" /><p>Full lifetime access</p></div> }
+                            @if ((hasCertificate != null && hasCertificate.Value))       { <div class="include-item"><img src="~/images/courses/course/bx-trophy.svg" /><p>Certificate of completion</p></div> }
+                        </div>
+                    }
+                }
+
+                <div class="purchase">
+                    <div class="prices">
+                        <h2>$@(string.Format("{0:0.00}", Model.Course.DiscountPrice != null ? Model.Course.DiscountPrice : Model.Course.Price))</h2>
+                        @if (Model.Course.DiscountPrice != null)
+                        {
+                            <p><s>$@string.Format("{0:0.00}", Model.Course.Price)</s></p>
+                        }
+                        
+                    </div>
+                    
+                    <a href="#" class="btn-theme-primary">Join course</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="course-author">
+            <img src="@Model.Course.CourseCreator.ProfileImageUrl" alt="author"/>
+            <div class="content">
+                <p class="learn">Learn from the best</p>
+                <h1>@Model.Course.CourseCreator.FirstName @Model.Course.CourseCreator.LastName</h1>
+                <p>@Model.Course.CourseCreator.Description</p>
+
+                <div class="social-buttons">
+                    @if (Model.Course.CourseCreator.YouTubeSubscriberCount != null)
+                    {
+                        <a href="#" class="btn-youtube"><i class="fa-brands fa-youtube"></i>@Model.Course.CourseCreator.YouTubeSubscriberCount.Value.ToStringWithSuffix() subscribers</a>
+                    }
+                    @if (Model.Course.CourseCreator.FacebookFollowerCount != null)
+                    {
+                        <a href="#" class="btn-facebook"><i class="fa-brands fa-facebook"></i>@Model.Course.CourseCreator.FacebookFollowerCount.Value.ToStringWithSuffix() followers</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
