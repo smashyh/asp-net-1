@@ -1,0 +1,18 @@
+@mixin unordered-checkbox-list {
+
+    ul {
+        text-align: left;
+        list-style-image: url('../../../../images/home/checkbox-bullet.svg');
+        list-style-position: inside;
+
+        li {
+            @include font-body-m;
+
+            &:before {
+                padding-bottom: 4px;
+            }
+        }
+
+        @content
+    }
+}

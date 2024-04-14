@@ -1,0 +1,27 @@
+﻿<section class="cookie-consent">
+    <div id="cookie-backdrop">
+        <div class="cookie-message">
+            <h6>This website uses cookies to improve the user experience.</h6>
+            <button class="btn-theme-primary" onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+
+
+</section>
+
+<script>
+    function acceptCookies() {
+        try {
+            fetch('@Url.Action("AcceptCookies", "SiteSettings")', {
+                method: 'post',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
+            })
+            .then(() => {
+                    window.location.reload(true);
+            });
+        }
+        catch { }
+    }
+</script>

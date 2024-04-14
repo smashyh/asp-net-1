@@ -1,0 +1,63 @@
+﻿@model SignInViewModel
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<section class="login-form">
+    <div class="container">
+
+        <form id="form" method="post" asp-controller="Auth" asp-action="SignIn" asp-route-ReturnUrl="@ViewData["ReturnUrl"]">
+            <h1>Welcome Back!</h1>
+            <p>Don't have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
+
+            @{
+                if (ViewData.ContainsKey("StatusMessage") && !string.IsNullOrEmpty(ViewData["StatusMessage"] as string))
+                {
+                    <div class="message-error large">
+                        @ViewData["StatusMessage"]
+                    </div>
+                }
+            }
+
+            <div class="form-content">
+                <div class="input-field email-address">
+                    <label class="input-label" asp-for="Email"></label>
+                    <input asp-for="Email" />
+                    <span asp-validation-for="Email"></span>
+                </div>
+
+                <div class="input-field password">
+                    <label class="input-label" asp-for="Password"></label>
+                    <input asp-for="Password" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+
+                <div class="checkbox-field">
+                    <div class="input-field">
+                        <input asp-for="RememberMe" />
+                        <label asp-for="RememberMe">
+                            Remember me
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn-theme-primary submit-form" type="submit">Sign in</button>
+
+            </div>
+        </form>
+
+        <div class="forgot-password unselectable">
+            <a href="#">Forgot your password?</a>
+        </div>
+        
+        <div class="social-networks">
+            <h6>Or sign in with your social network</h6>
+            <div class="buttons">
+                <a class="btn-theme-secondary"><i class="fa-brands fa-google"></i>Google</a>
+                <a class="btn-theme-secondary"><i class="fa-brands fa-facebook"></i>Facebook</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <script src="~/js/partials/auth/signin.js" type="module" defer></script> -->

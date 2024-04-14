@@ -1,0 +1,85 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease-in-out; // For dark mode transitions.
+    //transition: all ease-in-out 0.3s; // For dark mode transitions.
+}
+
+body {
+    font-family: var(--font-manrope);
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--color-white);
+    color: var(--color-gray-900);
+    overflow-x: hidden;
+
+    &:has(#backdrop.active), &:has(#cookie-backdrop) {
+        overflow: hidden;
+        //position: fixed;
+    }
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wrapper
+{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+
+    @include sm {
+        max-width: 540px;
+    }
+
+    @include md {
+        max-width: 720px;
+    }
+
+    @include lg {
+        max-width: 960px;
+    }
+
+    @include xl {
+        max-width: 1140px;
+    }
+
+    @include xxl {
+        max-width: 1320px;
+    }
+}
+
+@mixin form-layout {
+    @include font-standard;
+    padding-left: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray-400);
+    outline: none;
+
+    &:focus {
+        border: 1px solid var(--color-gray-600);
+    }
+}
+
+/*input[type=email] {
+    background-image: url('../../../../images/home/bx-envelope.svg');
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    @include form-layout;
+    padding-left: 40px;
+}*/

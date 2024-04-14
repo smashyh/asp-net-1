@@ -1,0 +1,42 @@
+.highlightable-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include xl {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .highlightable {
+        transition: all 0.1s ease-in-out;
+        padding: 64px;
+        background-color: rgba(0,0,0,0);
+        border-radius: 8px;
+
+        img {
+            padding-bottom: 32px;
+        }
+
+        h5 {
+            @include font-heading-h5;
+            padding-bottom: 16px;
+        }
+
+        p {
+            @include font-body-m;
+        }
+
+        &:hover {
+            background-color: var(--color-white);
+
+            @include dark-mode {
+                background-color: var(--color-gray-200);
+            }
+
+            @include shadow-s;
+        }
+    }
+}

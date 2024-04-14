@@ -1,0 +1,131 @@
+form {
+    display: grid;
+    width: 100%;
+
+    @mixin message {
+        @include font-body-xs;
+
+        &.large {
+            @include font-body-m;
+        }
+
+        border-radius: 4px;
+        border: none;
+        padding: 4px 8px;
+        display: block;
+    }
+
+    .message-error {
+        @include message;
+        background-color: var(--color-danger-alpha);
+        color: var(--color-danger);
+    }
+
+    .message-success {
+        @include message;
+        background-color: var(--color-success-alpha);
+        color: var(--color-success);
+    }
+
+    .input-label {
+        @include font-weight-semibold;
+        font-size: 16px;
+    }
+
+    input {
+        @include font-body-m;
+        color: var(--color-gray-500);
+        background-color: var(--color-white);
+        border-radius: 8px;
+        // exclusion because this will affect
+        // the size of our buttons otherwise
+        &:not(input[type=submit]) {
+            height: 52px;
+            border: 1px solid var(--color-gray-500);
+
+            &:focus {
+                border: 1px solid var(--color-gray-700);
+                color: var(--color-gray-800);
+            }
+
+            .input-validation-error {
+                border-color: var(--color-danger);
+
+                &:focus {
+                    border-color: var(--color-danger);
+                }
+            }
+        }
+
+        outline: none;
+        padding-left: 8px;
+        padding-right: 8px;
+        transition: background-color ease-in-out 0.3s;
+    }
+
+    input[type=submit] {
+        appearance: none;
+
+        &:focus {
+        }
+    }
+
+    textarea {
+        @include font-body-m;
+        resize: none;
+        color: var(--color-gray-500);
+        background-color: var(--color-white);
+        border-radius: 8px;
+        border: 1px solid var(--color-gray-500);
+        outline: none;
+        padding: 8px;
+        transition: background-color ease-in-out 0.3s;
+
+        &:focus {
+            border: 1px solid var(--color-gray-700);
+            color: var(--color-gray-800);
+        }
+    }
+
+    .input-field {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .checkbox-field {
+
+        .input-field {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+
+            label {
+                color: var(--color-gray-700);
+            }
+        }
+    }
+
+    input[type=checkbox] {
+        width: 18px;
+        height: 18px;
+    }
+
+    .field-validation-error {
+        color: var(--color-danger);
+    }
+
+    .input-validation-error {
+
+        // for some reason i had to put this selector in
+        // otherwise it wouldn't work
+        &:not(input[type=submit]) {
+            border-color: var(--color-danger);
+
+            &:focus {
+                border-color: var(--color-danger);
+            }
+        }
+    }
+}

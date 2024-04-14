@@ -1,0 +1,23 @@
+section.account-settings {
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 100px;
+        @import "_accountsettingsmenu.scss";
+
+        .account-menus {
+            width: 100%;
+            margin-top: 56px;
+            margin-left: 0;
+
+            @include xl {
+                width: 75%;
+                margin-left: 122px;
+            }
+
+            @import "_accountdetails.scss";
+            @import "_accountsecurity.scss";
+        }
+    }
+}

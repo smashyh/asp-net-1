@@ -1,0 +1,83 @@
+.account-security {
+    h2 {
+        padding-bottom: 32px;
+    }
+
+    h5 {
+        color: var(--color-theme);
+        padding-bottom: 12px;
+    }
+
+    .change-password {
+
+        #form-password {
+
+            .form-content {
+
+                .grid {
+                    padding-top: 12px;
+                    row-gap: 15px;
+                    column-gap: 8px;
+                    display: grid;
+                    grid-template-areas: "currentpassword currentpassword" "newpassword newpassword" "confirmpassword confirmpassword";
+                    grid-template-columns: 1fr;
+
+                    @include md {
+                        grid-template-areas: "currentpassword empty" "newpassword confirmpassword";
+                        grid-template-columns: 1fr 1fr;
+                    }
+
+
+                    .current-password {
+                        grid-area: currentpassword;
+                    }
+
+                    .empty {
+                        grid-area: empty;
+                    }
+
+                    .new-password {
+                        grid-area: newpassword;
+                    }
+
+                    .confirm-password {
+                        grid-area: confirmpassword;
+                    }
+                }
+
+                .save-cancel-buttons {
+                    padding-top: 32px;
+                    padding-bottom: 40px;
+
+                    a {
+                        margin-right: 8px;
+                    }
+                }
+
+                border-bottom: 1px solid var(--color-gray-400);
+            }
+        }
+    }
+
+    .delete-account {
+        padding-top: 32px;
+
+        #form-delete-account {
+
+            .grid {
+                padding-top: 12px;
+                row-gap: 15px;
+                column-gap: 8px;
+                display: grid;
+                grid-template-areas: "deletecheckbox deletecheckbox";
+                grid-template-columns: 1fr;
+
+                .checkbox-field {
+                    grid-area: deletecheckbox;
+                    padding-top: 24px;
+                    padding-bottom: 24px;
+                }
+            }
+        }
+    }
+}
