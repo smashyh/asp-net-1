@@ -90,7 +90,6 @@
                 const int maxNums = 5;
 
                 // When current page is in the middle, how many pages to show to the left and the right.
-                // Only works if maxNums is an odd number, hence the name.
                 int oddDivision = maxNums / 2;
 
                 // The default for-loop range, if we're not nearing the first or last page.
@@ -98,8 +97,8 @@
                 int upperOffset = Model.CurrentPage + oddDivision;
 
                 // To make sure we show as close to 'maxNums' pages as possible,
-                // we add the amount upperOffset overflows the total page count by,
-                // as well as the amount lowerOffset underflows 1 by.
+                // we add the amount upperOffset overflows the total page count by to the initial for-loop value,
+                // as well as the amount lowerOffset underflows 1 by to the end for-loop value.
 
                 int startValue = (upperOffset > Model.TotalPageCount)
                     ? lowerOffset + Model.TotalPageCount - upperOffset
@@ -109,6 +108,7 @@
                     ? endValue = upperOffset + 1 - lowerOffset
                     : endValue = upperOffset;
 
+                // Also clamp the values so we don't show page numbers outside the valid range.
                 @for (int i = Math.Max(startValue, 1); i <= Math.Min(endValue, Model.TotalPageCount); i++)
                 {
                     string btnClass = "btn-pagination" + (i == Model.CurrentPage ? " active" : "");
