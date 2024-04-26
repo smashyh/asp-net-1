@@ -82,15 +82,24 @@
         <div class="pagination" data-page="@Model.CurrentPage">
             @if (Model.TotalPageCount > 0 /*&& Model.CurrentPage == Math.Clamp(Model.CurrentPage, 1, Model.TotalPageCount)*/)
             {
+                // Add button to go to previous page. Caps at 1.
                 int prevIndex = Math.Max(Model.CurrentPage - 1, 1);
                 <a class="btn-pagination" data-page="@prevIndex"><i class="fa-solid fa-chevron-left"></i></a>
 
+                // The max number of pages to show. (@Todo: Should make this a property somewhere.)
                 const int maxNums = 5;
 
+                // When current page is in the middle, how many pages to show to the left and the right.
+                // Only works if maxNums is an odd number, hence the name.
                 int oddDivision = maxNums / 2;
 
+                // The default for-loop range, if we're not nearing the first or last page.
                 int lowerOffset = Model.CurrentPage - oddDivision;
                 int upperOffset = Model.CurrentPage + oddDivision;
+
+                // To make sure we show as close to 'maxNums' pages as possible,
+                // we add the amount upperOffset overflows the total page count by,
+                // as well as the amount lowerOffset underflows 1 by.
 
                 int startValue = (upperOffset > Model.TotalPageCount)
                     ? lowerOffset + Model.TotalPageCount - upperOffset
